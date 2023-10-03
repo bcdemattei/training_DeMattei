@@ -12,7 +12,7 @@ library(dplyr)
 library(lubridate)
 ```
 
-#Excercise 9.1
+# Excercise 9.1
 
 ## Read Data
 ```{r}
@@ -59,7 +59,7 @@ birds_subset <- bird_observations %>%
 
 Question:
 
->what do you expect a `left_join()` between birds_subset and sites to contain? 
+> What do you expect a `left_join()` between birds_subset and sites to contain? 
 
 I expect `left_join()` between birds_subset (left) and sites (right) to contain the park_code, park_district, park_name, point_code, point_location, and point_acreage from each row in sites that has a matching site_id with birds_subset.
 
@@ -83,7 +83,8 @@ birds_full <- full_join(x = birds_subset,
 ### `inner_join()`
 
 Question:
->what do you expect an `inner_join()` between birds_subset and taxalist to contain?
+
+> What do you expect an `inner_join()` between birds_subset and taxalist to contain?
 
 I expect birds_inner to include the common species name and asu_itis value that corresponds only with BHCO and RWBL.
 
@@ -101,7 +102,8 @@ birds_inner_left <- left_join(x = birds_subset, y = taxalist, by = "species_id")
 ```
 
 Question:
->Why does that make sense for this scenario? In what case would you expect the outcome to differ from an inner_join()?
+
+> Why does that make sense for this scenario? In what case would you expect the outcome to differ from an `inner_join()`?
 
 This makes sense for this scenario as birds_subset only has two species_id values that are included in the taxalist. If birds_subset had additional species names that were not included in the taxalist set, then the resulting birds_inner would not include the entries with those species names where the birds_left would--with the 'common_name' and 'asu_itis' columns having NAs in the rows with the species that are not in the taxalist.
 
@@ -126,7 +128,8 @@ birds_obs_subset <- bird_observations %>%
 ## Exploring and fixing `observer`
 
 Question:
->How many observers are there? Which value is unlike the others?
+
+> How many observers are there? Which value is unlike the others?
 
 ```{r}
 unique(birds_obs_subset$observer)
@@ -148,14 +151,20 @@ unique(birds_obs_subset$observer)
 
 ## Lubridate 
 ```{r}
-birds_obs_subset <- birds_obs_subset %>% 
+tot_birds_obs_subset <- birds_obs_subset %>% 
   mutate(survey_month = lubridate::month(survey_date)) %>%
   mutate(survey_month = as.factor(survey_month)) %>% 
   relocate(survey_month, .after = survey_date) %>%
   filter(park_name %in% c("Lindo", "Orme", "Palomino", "Sonrisa")) %>%
   group_by(park_name, survey_month)%>%
-  summarize(tot_bird_count_month = n())
+  summarize(tot_bird_count_month = n())%>%
+  ungroup()
 
-
+head(tot_birds_obs_subset)
 ```
 
+Question:
+
+> Take a look at your final data frame. Does it give you the outcome you expected? Is it informative? How would you improve this wrangling process?
+
+It looks like how I expected to turn out. It is informative and should probably do well in ggplot. I changed the wrangling process by creating a new name for the resulting total bird per park for every month. 
