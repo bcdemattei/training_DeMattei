@@ -1,0 +1,66 @@
+---
+title: "Mini Literature Analysis"
+author: "Braden Charles DeMattei"
+format: html
+---
+
+## Introduction
+
+### About this data
+
+This is the North Pole Environmental Observatory Bottle Chemistry data set, and it contains conductivity, temperature, and depth data collected from the Arctic ocean from 2000 to 2014 during the months of April or May. Data was retrieved October 2nd, 2023 and is available [here](https://arcticdata.io/catalog/view/doi:10.18739/A25T3FZ8X) 
+
+### Setup 
+
+```{r}
+library(readr)
+library(here) #set the default wd to wherever the R project is
+```
+
+
+### Read Data
+```{r}
+#| warning: false
+bg_chem <- readr::read_csv(here("data/BGchem2008data.csv"))
+```
+
+Exploring our data
+```{r}
+#| eval: false
+colnames(bg_chem)
+
+str(bg_chem)
+
+summary(bg_chem)
+
+unique(bg_chem$Date)
+```
+
+
+## Analysis
+### Calculate summary statistics
+```{r}
+nitrate <- mean(bg_chem$NO3)
+nitrite <- mean(bg_chem$NO2)
+amm <- mean(bg_chem$NH4)
+phos <- mean(bg_chem$P)
+
+```
+
+
+### Calculate mean Redfield ratio
+```{r}
+ratio <- (nitrate + nitrite + amm/phos)
+```
+
+
+### Plot Ratio
+```{r}
+plot(x = bg_chem$P, y = bg_chem$NO2 + bg_chem$NO3 + bg_chem$NH4)
+```
+
+
+## Conclusion
+
+The Redfiled ratio of this data is `r round(ratio)`
+

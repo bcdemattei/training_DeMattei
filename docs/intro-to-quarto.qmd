@@ -1,0 +1,73 @@
+---
+title: "Intro to Quarto"
+format: html
+bibliography: references.bib
+---
+
+# Header 1
+
+I'm going to **bold this text**
+
+## Header 2
+
+A friend once said:
+
+> It's always better to give
+
+> Than to receive
+
+[click me](https://google.com)
+
+### Header 3
+
+-   List 1
+-   List 2
+
+#### Header 4
+
+##### Header 5
+
+This is a very important fact [@oke2020]
+
+This is a very important fact @oke2020
+
+Inserting tables
+
+| Col1      | Col2   | Col3    |
+|-----------|--------|---------|
+| element 1 | lalala | aefeed  |
+| element 2 | asdf   | agwaa   |
+| element 3 | asdfe  | asdedee |
+
+: CAPTION!
+
+
+## Code Chunks
+### With default 'echo' setting
+
+```{r}
+
+x <- 4*8
+
+hight_vec <- c(5.2,6.0,5.7)
+
+x
+
+hight_vec
+```
+
+### With echo: FALSE
+
+```{r}
+#| echo: FALSE
+x <- 4*8
+
+hight_vec <- c(5.2,6.0,5.7)
+
+x
+
+hight_vec
+```
+
+
+
