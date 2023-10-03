@@ -1,0 +1,24 @@
+---
+title: "R Practice: Tidy Data and Joins"
+format: html
+---
+
+## Setup
+```{r}
+#| warning: false
+library(readr)
+library(dplyr)
+library(lubridate)
+```
+
+## Read Data
+```{r}
+bird_data <- read.csv("https://portal.edirepository.org/nis/dataviewer?packageid=knb-lter-cap.256.10&entityid=53edaa7a0e083013d9bf20322db1780e")
+
+survey_data <- read.csv("https://portal.edirepository.org/nis/dataviewer?packageid=knb-lter-cap.256.10&entityid=b2466fa5cb5ed7ee1ea91398fc291c59")
+
+sites_data <- read.csv("https://portal.edirepository.org/nis/dataviewer?packageid=knb-lter-cap.256.10&entityid=81bf72420e69077097fb0790dcdc63a6")
+
+taxa_data <- read.csv("https://portal.edirepository.org/nis/dataviewer?packageid=knb-lter-cap.256.10&entityid=58f863b7e3066e68536a9cacdc7bd58e")
+```
+
