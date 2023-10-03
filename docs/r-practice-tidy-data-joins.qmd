@@ -151,6 +151,7 @@ unique(birds_obs_subset$observer)
 
 ## Lubridate 
 ```{r}
+#| message: false
 tot_birds_obs_subset <- birds_obs_subset %>% 
   mutate(survey_month = lubridate::month(survey_date)) %>%
   mutate(survey_month = as.factor(survey_month)) %>% 
@@ -161,6 +162,7 @@ tot_birds_obs_subset <- birds_obs_subset %>%
   ungroup()
 
 head(tot_birds_obs_subset)
+str(tot_birds_obs_subset)
 ```
 
 Question:

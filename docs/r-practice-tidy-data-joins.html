@@ -201,7 +201,7 @@ code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warni
 </div>
 <p>Question:</p>
 <blockquote class="blockquote">
-<p>Why does that make sense for this scenario? In what case would you expect the outcome to differ from an inner_join()?</p>
+<p>Why does that make sense for this scenario? In what case would you expect the outcome to differ from an <code>inner_join()</code>?</p>
 </blockquote>
 <p>This makes sense for this scenario as birds_subset only has two species_id values that are included in the taxalist. If birds_subset had additional species names that were not included in the taxalist set, then the resulting birds_inner would not include the entries with those species names where the birds_left would–with the ‘common_name’ and ‘asu_itis’ columns having NAs in the rows with the species that are not in the taxalist.</p>
 </section>
@@ -267,12 +267,9 @@ code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warni
 <span id="cb14-5"><a href="#cb14-5" aria-hidden="true" tabindex="-1"></a>  <span class="fu">filter</span>(park_name <span class="sc">%in%</span> <span class="fu">c</span>(<span class="st">"Lindo"</span>, <span class="st">"Orme"</span>, <span class="st">"Palomino"</span>, <span class="st">"Sonrisa"</span>)) <span class="sc">%&gt;%</span></span>
 <span id="cb14-6"><a href="#cb14-6" aria-hidden="true" tabindex="-1"></a>  <span class="fu">group_by</span>(park_name, survey_month)<span class="sc">%&gt;%</span></span>
 <span id="cb14-7"><a href="#cb14-7" aria-hidden="true" tabindex="-1"></a>  <span class="fu">summarize</span>(<span class="at">tot_bird_count_month =</span> <span class="fu">n</span>())<span class="sc">%&gt;%</span></span>
-<span id="cb14-8"><a href="#cb14-8" aria-hidden="true" tabindex="-1"></a>  <span class="fu">ungroup</span>()</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
-<div class="cell-output cell-output-stderr">
-<pre><code>`summarise()` has grouped output by 'park_name'. You can override using the
-`.groups` argument.</code></pre>
-</div>
-<div class="sourceCode cell-code" id="cb16"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb16-1"><a href="#cb16-1" aria-hidden="true" tabindex="-1"></a><span class="fu">head</span>(tot_birds_obs_subset)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<span id="cb14-8"><a href="#cb14-8" aria-hidden="true" tabindex="-1"></a>  <span class="fu">ungroup</span>()</span>
+<span id="cb14-9"><a href="#cb14-9" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb14-10"><a href="#cb14-10" aria-hidden="true" tabindex="-1"></a><span class="fu">head</span>(tot_birds_obs_subset)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 <div class="cell-output cell-output-stdout">
 <pre><code># A tibble: 6 × 3
   park_name survey_month tot_bird_count_month
@@ -283,6 +280,13 @@ code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warni
 4 Lindo     9                             485
 5 Lindo     10                            135
 6 Lindo     12                            403</code></pre>
+</div>
+<div class="sourceCode cell-code" id="cb16"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb16-1"><a href="#cb16-1" aria-hidden="true" tabindex="-1"></a><span class="fu">str</span>(tot_birds_obs_subset)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="cell-output cell-output-stdout">
+<pre><code>tibble [27 × 3] (S3: tbl_df/tbl/data.frame)
+ $ park_name           : chr [1:27] "Lindo" "Lindo" "Lindo" "Lindo" ...
+ $ survey_month        : Factor w/ 10 levels "1","3","4","5",..: 1 2 5 7 8 10 NA 1 2 5 ...
+ $ tot_bird_count_month: int [1:27] 92 580 669 485 135 403 6 140 694 795 ...</code></pre>
 </div>
 </div>
 <p>Question:</p>
