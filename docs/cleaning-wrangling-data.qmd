@@ -137,6 +137,7 @@ mean_region2 <- catch_long %>%
 ```
 
 ## Using the `filter()`
+<!-- This is a comment-->
 
 ```{r}
 sse_catch <- catch_long %>% 
