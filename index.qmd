@@ -7,7 +7,7 @@ author: "Braden Charles DeMattei"
 ## Course Lessons
 - [Intro to literate analysis](docs/literature-analysis.html)
 - Cleaning and Wrangling
-- Data Viz
+- [Data Viz](docs/data-viz.html)
 - Functions and Packages
 
 
