@@ -3,4 +3,14 @@ title: "coreR Course"
 format: html
 ---
 
-Hello World :(
+## Course Lessons
+- [Intro to literate analysis](docs/literature-analysis.html)
+- Cleaning and Wrangling
+- Data Viz
+- Functions and Packages
+
+
+## Practice Sessions
+- Joins, cleaning, and wrangling
+- Data Viz
+- Writing Functions
