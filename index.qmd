@@ -1,6 +1,7 @@
 ---
 title: "coreR Course"
 format: html
+author: "Braden Charles DeMattei"
 ---
 
 ## Course Lessons
